@@ -18,6 +18,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.4.0",
     "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "react-dom": "^16.8.4",
+    "react-router-dom": "^5.0.0"
   }
 }
