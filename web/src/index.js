@@ -1,8 +1,11 @@
-const component = () => {
-  let element = document.createElement('div');
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 
-  element.innerHTML = 'Hello Webpack';
-  return element;
+class App extends Component {
+
+  render() {
+    return <div>Hello react</div>;
+  }
 }
 
-document.body.appendChild(component());
+ReactDOM.render(<App />, document.body.appendChild(document.createElement('div')))

@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  devtool: 'inline-source-map',
+  devtool: 'cheap-module-inline-source-map',
   entry: ["@babel/polyfill", "./src/index.js"],
   plugins: [new HtmlWebpackPlugin()],
   module: {
