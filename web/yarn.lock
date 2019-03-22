@@ -44,6 +44,17 @@
     "@babel/types" "^7.3.0"
     esutils "^2.0.0"
 
+"@babel/helper-create-class-features-plugin@^7.4.0":
+  version "7.4.0"
+  resolved "http://registry.npm.taobao.org/@babel/helper-create-class-features-plugin/download/@babel/helper-create-class-features-plugin-7.4.0.tgz#30fd090e059d021995c1762a5b76798fa0b51d82"
+  dependencies:
+    "@babel/helper-function-name" "^7.1.0"
+    "@babel/helper-member-expression-to-functions" "^7.0.0"
+    "@babel/helper-optimise-call-expression" "^7.0.0"
+    "@babel/helper-plugin-utils" "^7.0.0"
+    "@babel/helper-replace-supers" "^7.4.0"
+    "@babel/helper-split-export-declaration" "^7.4.0"
+
 "@babel/helper-function-name@^7.1.0":
   version "7.1.0"
   resolved "http://registry.npm.taobao.org/@babel/helper-function-name/download/@babel/helper-function-name-7.1.0.tgz#a0ceb01685f73355d4360c1247f582bfafc8ff53"
@@ -58,9 +69,30 @@
   dependencies:
     "@babel/types" "^7.0.0"
 
+"@babel/helper-member-expression-to-functions@^7.0.0":
+  version "7.0.0"
+  resolved "http://registry.npm.taobao.org/@babel/helper-member-expression-to-functions/download/@babel/helper-member-expression-to-functions-7.0.0.tgz#8cd14b0a0df7ff00f009e7d7a436945f47c7a16f"
+  dependencies:
+    "@babel/types" "^7.0.0"
+
+"@babel/helper-optimise-call-expression@^7.0.0":
+  version "7.0.0"
+  resolved "http://registry.npm.taobao.org/@babel/helper-optimise-call-expression/download/@babel/helper-optimise-call-expression-7.0.0.tgz#a2920c5702b073c15de51106200aa8cad20497d5"
+  dependencies:
+    "@babel/types" "^7.0.0"
+
 "@babel/helper-plugin-utils@^7.0.0":
   version "7.0.0"
   resolved "http://registry.npm.taobao.org/@babel/helper-plugin-utils/download/@babel/helper-plugin-utils-7.0.0.tgz#bbb3fbee98661c569034237cc03967ba99b4f250"
+
+"@babel/helper-replace-supers@^7.4.0":
+  version "7.4.0"
+  resolved "http://registry.npm.taobao.org/@babel/helper-replace-supers/download/@babel/helper-replace-supers-7.4.0.tgz#4f56adb6aedcd449d2da9399c2dcf0545463b64c"
+  dependencies:
+    "@babel/helper-member-expression-to-functions" "^7.0.0"
+    "@babel/helper-optimise-call-expression" "^7.0.0"
+    "@babel/traverse" "^7.4.0"
+    "@babel/types" "^7.4.0"
 
 "@babel/helper-split-export-declaration@^7.4.0":
   version "7.4.0"
@@ -87,6 +119,27 @@
 "@babel/parser@^7.4.0":
   version "7.4.2"
   resolved "http://registry.npm.taobao.org/@babel/parser/download/@babel/parser-7.4.2.tgz#b4521a400cb5a871eab3890787b4bc1326d38d91"
+
+"@babel/plugin-proposal-class-properties@^7.4.0":
+  version "7.4.0"
+  resolved "http://registry.npm.taobao.org/@babel/plugin-proposal-class-properties/download/@babel/plugin-proposal-class-properties-7.4.0.tgz#d70db61a2f1fd79de927eea91f6411c964e084b8"
+  dependencies:
+    "@babel/helper-create-class-features-plugin" "^7.4.0"
+    "@babel/helper-plugin-utils" "^7.0.0"
+
+"@babel/plugin-proposal-decorators@^7.4.0":
+  version "7.4.0"
+  resolved "http://registry.npm.taobao.org/@babel/plugin-proposal-decorators/download/@babel/plugin-proposal-decorators-7.4.0.tgz#8e1bfd83efa54a5f662033afcc2b8e701f4bb3a9"
+  dependencies:
+    "@babel/helper-create-class-features-plugin" "^7.4.0"
+    "@babel/helper-plugin-utils" "^7.0.0"
+    "@babel/plugin-syntax-decorators" "^7.2.0"
+
+"@babel/plugin-syntax-decorators@^7.2.0":
+  version "7.2.0"
+  resolved "http://registry.npm.taobao.org/@babel/plugin-syntax-decorators/download/@babel/plugin-syntax-decorators-7.2.0.tgz#c50b1b957dcc69e4b1127b65e1c33eef61570c1b"
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.0.0"
 
 "@babel/plugin-syntax-jsx@^7.2.0":
   version "7.2.0"
@@ -1702,7 +1755,7 @@ hmac-drbg@^1.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
-hoist-non-react-statics@^3.1.0:
+hoist-non-react-statics@^3.0.0, hoist-non-react-statics@^3.1.0:
   version "3.3.0"
   resolved "http://registry.npm.taobao.org/hoist-non-react-statics/download/hoist-non-react-statics-3.3.0.tgz#b09178f0122184fb95acf525daaecb4d8f45958b"
   dependencies:
@@ -2356,6 +2409,17 @@ mkdirp@0.5.x, mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0:
   dependencies:
     minimist "0.0.8"
 
+mobx-react@^5.4.3:
+  version "5.4.3"
+  resolved "http://registry.npm.taobao.org/mobx-react/download/mobx-react-5.4.3.tgz#6709b7dd89670c40e9815914ac2ca49cc02bfb47"
+  dependencies:
+    hoist-non-react-statics "^3.0.0"
+    react-lifecycles-compat "^3.0.2"
+
+mobx@^5.9.0:
+  version "5.9.0"
+  resolved "http://registry.npm.taobao.org/mobx/download/mobx-5.9.0.tgz#a08edd7132787f771409c9c33788a5df66ff7ce7"
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/move-concurrently/download/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -2946,6 +3010,10 @@ react-dom@^16.8.4:
 react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1:
   version "16.8.4"
   resolved "http://registry.npm.taobao.org/react-is/download/react-is-16.8.4.tgz#90f336a68c3a29a096a3d648ab80e87ec61482a2"
+
+react-lifecycles-compat@^3.0.2:
+  version "3.0.4"
+  resolved "http://registry.npm.taobao.org/react-lifecycles-compat/download/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
 
 react-router-dom@^5.0.0:
   version "5.0.0"

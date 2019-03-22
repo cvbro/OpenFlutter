@@ -1,37 +1,18 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+import { BrowserRouter as Router } from "react-router-dom"
+import { Provider } from "mobx-react"
 
-function Index() {
-  return <h2>Home</h2>;
-}
+import store from './store'
+import App from './App'
 
-function About() {
-  return <h2>About</h2>;
-}
 
-class App extends Component {
+const Connected = Component => (
+	<Router>
+		<Provider store={store}>
+			<App />
+		</Provider>
+	</Router>
+)
 
-  render() {
-    return (
-      <Router>
-        <div>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/about/">About</Link>
-              </li>
-            </ul>
-          </nav>
-          <Route path="/" exact component={Index} />
-          <Route path="/about/" component={About} />
-        </div>
-      </Router>
-    )
-  }
-}
-
-ReactDOM.render(<App />, document.body.appendChild(document.createElement('div')))
+ReactDOM.render(<Connected />, document.body.appendChild(document.createElement('div')))
