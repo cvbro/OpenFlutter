@@ -6,6 +6,8 @@ import { Provider } from "mobx-react"
 import store from './store'
 import App from './App'
 
+import './styles/main.scss'
+
 
 const Connected = Component => (
 	<Router>
@@ -15,4 +17,4 @@ const Connected = Component => (
 	</Router>
 )
 
-ReactDOM.render(<Connected />, document.body.appendChild(document.createElement('div')))
+ReactDOM.render(<Connected />, document.body.appendChild(document.createElement('main')))
