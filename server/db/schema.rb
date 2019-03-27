@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_22_124842) do
+ActiveRecord::Schema.define(version: 2019_03_27_065257) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 2019_03_22_124842) do
     t.string "name"
     t.string "authors", array: true
     t.string "uploaders", array: true
-    t.string "url"
+    t.string "pub_url"
     t.string "homepage"
-    t.string "repository"
+    t.string "repository_url"
     t.text "about"
     t.string "license"
     t.integer "popularity"

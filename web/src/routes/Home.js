@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { observer } from "mobx-react"
+
+import PackageList from '../components/PackageList'
+
 import logo from '../images/logo.png'
+
 
 @observer
 export default class Home extends Component {
@@ -46,72 +50,7 @@ export default class Home extends Component {
             <div className="title">
               <span>音乐</span>
             </div>
-            <ul className="main-list clear">
-              <li className="main-item fl">
-                <div className="main-img"></div>
-                <div className="main-title">Image_picker: 1.1.1</div>
-                <div className="limit clear">
-                  <span className="fl"></span>
-                  <span className="fl"></span>
-                </div>
-              </li>
-              <li className="main-item fl">
-                <div className="main-img"></div>
-                <div className="main-title">Image_picker: 1.1.1</div>
-                <div className="limit clear">
-                  <span className="fl"></span>
-                  <span className="fl"></span>
-                </div>
-              </li>
-              <li className="main-item fl">
-                <div className="main-img"></div>
-                <div className="main-title">Image_picker: 1.1.1</div>
-                <div className="limit clear">
-                  <span className="fl"></span>
-                  <span className="fl"></span>
-                </div>
-              </li>
-              <li className="main-item fl">
-                <div className="main-img"></div>
-                <div className="main-title">Image_picker: 1.1.1</div>
-                <div className="limit clear">
-                  <span className="fl"></span>
-                  <span className="fl"></span>
-                </div>
-              </li>
-              <li className="main-item fl">
-                <div className="main-img"></div>
-                <div className="main-title">Image_picker: 1.1.1</div>
-                <div className="limit clear">
-                  <span className="fl"></span>
-                  <span className="fl"></span>
-                </div>
-              </li>
-              <li className="main-item fl">
-                <div className="main-img"></div>
-                <div className="main-title">Image_picker: 1.1.1</div>
-                <div className="limit clear">
-                  <span className="fl"></span>
-                  <span className="fl"></span>
-                </div>
-              </li>
-              <li className="main-item fl">
-                <div className="main-img"></div>
-                <div className="main-title">Image_picker: 1.1.1</div>
-                <div className="limit clear">
-                  <span className="fl"></span>
-                  <span className="fl"></span>
-                </div>
-              </li>
-              <li className="main-item fl">
-                <div className="main-img"></div>
-                <div className="main-title">Image_picker: 1.1.1</div>
-                <div className="limit clear">
-                  <span className="fl"></span>
-                  <span className="fl"></span>
-                </div>
-              </li>
-            </ul>
+            <PackageList />
             <div className="loadMore">加载更多</div>
           </div>
         </div>
@@ -119,3 +58,4 @@ export default class Home extends Component {
     )
   }
 }
+

@@ -17,7 +17,7 @@ class PackageSpider < Kimurai::Base
 
   def pub_dartlang(response, url:, data: {})
     item = {}
-    item[:url] = url
+    item[:pub_url] = url
 
     if response.css('aside.sidebar').blank? or response.css('div.package-header').blank?
       raise NotFound
@@ -37,7 +37,7 @@ class PackageSpider < Kimurai::Base
     response.css('aside.sidebar a').each do |tag|
       case tag.text
       when 'Homepage' then item[:homepage] = tag.attribute('href').to_s
-      when 'Repository' then item[:repository] = tag.attribute('href').to_s
+      when 'Repository' then item[:repository_url] = tag.attribute('href').to_s
       end
     end
 
