@@ -1,10 +1,9 @@
 require 'net/http'
 class PackageSpider < Kimurai::Base
   @name = "package_spider"
-  @start_urls = ["https://pub.dartlang.org/flutter/packages"]
+  @start_urls = ["https://pub.flutter-io.cn/flutter/packages"]
   @config = {
     user_agent: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.84 Safari/537.36",
-    skip_request_errors: [{ error: Net::OpenTimeout }]
   }
 
   def parse(response, url:, data: {})
@@ -23,7 +22,7 @@ class PackageSpider < Kimurai::Base
       raise NotFound
     end
 
-    item[:name] = url.gsub 'https://pub.dartlang.org/packages/', ''
+    item[:name] = url.gsub 'https://pub.flutter-io.cn/packages/', ''
 
     children = response.css('aside.sidebar').children
     children.each_with_index do |tag, idx|
@@ -37,17 +36,16 @@ class PackageSpider < Kimurai::Base
     response.css('aside.sidebar a').each do |tag|
       case tag.text
       when 'Homepage' then item[:homepage] = tag.attribute('href').to_s
-      when 'Repository' then item[:repository_url] = tag.attribute('href').to_s
+      when /^Repository.*/ then item[:repository_url] = tag.attribute('href').to_s
       end
     end
 
     item[:published] = response.css('div.package-header div.metadata span').text
 
+    raise NotFound if item.blank?
     item
   end
 
   class NotFound < StandardError
   end
 end
-
-PackageSpider.crawl!

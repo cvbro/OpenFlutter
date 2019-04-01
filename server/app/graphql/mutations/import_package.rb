@@ -17,7 +17,9 @@ module Mutations
         }
       end
     rescue PackageSpider::NotFound
-      raise GraphQL::ExecutionError, "The package on pub.dartlang.org not found"
+      raise GraphQL::ExecutionError, "NotFound"
+    rescue Net::OpenTimeout
+      raise GraphQL::ExecutionError, "Timeout"
     end
 
   end

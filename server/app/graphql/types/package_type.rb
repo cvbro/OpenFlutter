@@ -11,5 +11,8 @@ module Types
     field :maintenance, Integer, null: true
     field :overall, Integer, null: true
     field :publisahed_at, String, null: true
+
+    field :image, FileType, null: true
+    field :video, FileType, null: true
   end
 end
