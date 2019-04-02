@@ -54,6 +54,8 @@ GEM
       graphql (~> 1.7)
       rails (>= 4.2)
     arel (9.0.0)
+    awesome_nested_set (3.1.4)
+      activerecord (>= 4.0.0, < 5.3)
     bootsnap (1.4.1)
       msgpack (~> 1.0)
     bootsnap (1.4.1-java)
@@ -83,13 +85,37 @@ GEM
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.8.0)
+    factory_bot (5.0.2)
+      activesupport (>= 4.2.0)
+    factory_bot_rails (5.0.1)
+      factory_bot (~> 5.0.0)
+      railties (>= 4.2.0)
     ffi (1.10.0)
     ffi (1.10.0-java)
     ffi (1.10.0-x64-mingw32)
     ffi (1.10.0-x86-mingw32)
+    formatador (0.2.5)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     graphql (1.9.3)
+    guard (2.15.0)
+      formatador (>= 0.2.4)
+      listen (>= 2.7, < 4.0)
+      lumberjack (>= 1.0.12, < 2.0)
+      nenv (~> 0.1)
+      notiffany (~> 0.0)
+      pry (>= 0.9.12)
+      shellany (~> 0.0)
+      thor (>= 0.18.1)
+    guard-bundler (2.2.1)
+      bundler (>= 1.3.0, < 3)
+      guard (~> 2.2)
+      guard-compat (~> 1.1)
+    guard-compat (1.2.1)
+    guard-rspec (4.7.3)
+      guard (~> 2.1)
+      guard-compat (~> 1.1)
+      rspec (>= 2.99.0, < 4.0)
     headless (2.3.1)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -117,6 +143,7 @@ GEM
     loofah (2.2.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
+    lumberjack (1.0.13)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (0.3.3)
@@ -145,6 +172,7 @@ GEM
     msgpack (1.2.9-x86-mingw32)
     murmurhash3 (0.1.6)
     murmurhash3 (0.1.6-java)
+    nenv (0.3.0)
     net-http-digest_auth (1.4.1)
     net-http-persistent (3.0.0)
       connection_pool (~> 2.2)
@@ -158,6 +186,9 @@ GEM
       mini_portile2 (~> 2.4.0)
     nokogiri (1.10.1-x86-mingw32)
       mini_portile2 (~> 2.4.0)
+    notiffany (0.1.1)
+      nenv (~> 0.1)
+      shellany (~> 0.0)
     ntlm-http (0.1.1)
     pg (1.1.4)
     pg (1.1.4-x64-mingw32)
@@ -174,6 +205,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
       spoon (~> 0.0)
+    pry-rails (0.3.9)
+      pry (>= 0.10.4)
     public_suffix (3.0.3)
     puma (3.12.1)
     puma (3.12.1-java)
@@ -230,6 +263,10 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rspec (3.8.0)
+      rspec-core (~> 3.8.0)
+      rspec-expectations (~> 3.8.0)
+      rspec-mocks (~> 3.8.0)
     rspec-core (3.8.0)
       rspec-support (~> 3.8.0)
     rspec-expectations (3.8.2)
@@ -249,9 +286,13 @@ GEM
     rspec-support (3.8.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.2)
+    seed-fu (2.3.9)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
     selenium-webdriver (3.141.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2, >= 1.2.2)
+    shellany (0.0.1)
     spoon (0.0.6)
       ffi
     spring (2.0.2)
@@ -300,17 +341,24 @@ PLATFORMS
 DEPENDENCIES
   activestorage-aliyun
   apollo_upload_server (= 2.0.0.beta.1)
+  awesome_nested_set
   bootsnap (>= 1.1.0)
   byebug
+  factory_bot_rails
   graphql
+  guard
+  guard-bundler
+  guard-rspec
   kimurai
   listen (>= 3.0.5, < 3.2)
   mini_magick
   pg (>= 0.18, < 2.0)
+  pry-rails
   puma (~> 3.11)
   rack-cors
   rails (~> 5.2.2, >= 5.2.2.1)
   rspec-rails
+  seed-fu (~> 2.3)
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
