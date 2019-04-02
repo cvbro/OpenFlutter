@@ -7,6 +7,14 @@ module Types
       argument :name, String, required: true
     end
 
+    field :categories, [CategoryType], null: true
+
+
+
+    def categories
+      Category.all
+    end
+
     def packages
       Package.all
     end
