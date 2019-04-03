@@ -6,7 +6,7 @@ import { ApolloLink } from 'apollo-link'
 import { createUploadLink } from 'apollo-upload-client'
 
 const options = {
-  uri: "http://localhost:3000/graphql",
+  uri: "http://openflutter.com/graphql",
 }
 
 const httpLink = ApolloLink.split(
