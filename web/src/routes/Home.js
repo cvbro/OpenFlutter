@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { observer } from "mobx-react"
+import { Link } from "react-router-dom"
+
 
 import PackageList from '../components/PackageList'
 
 import logo from '../images/logo.png'
 
 
-@observer
 export default class Home extends Component {
 
   render() {
