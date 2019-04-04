@@ -1,6 +1,6 @@
 module Types
   class PackageType < Types::BaseObject
-    field :id, ID, null: false
+    global_id_field :id
     field :name, String, null: true
     field :pub_url, String, null: true
     field :repository_url, String, null: true
