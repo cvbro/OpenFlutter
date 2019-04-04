@@ -12,8 +12,7 @@ module Types
     end
 
     def self.coerce_result(ruby_value, context)
-      # Override this to serialize a Ruby value for the GraphQL response
-      ruby_value.service_url if ruby_value.attachment
+      ruby_value.url
     end
   end
 end

@@ -1,4 +1,5 @@
+require 'carrierwave/orm/activerecord'
 class Package < ApplicationRecord
-  has_one_attached :image
-  has_one_attached :video
+  mount_uploader :image, ImageUploader
+  mount_uploader :video, VideoUploader
 end

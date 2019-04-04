@@ -1,10 +1,8 @@
 FactoryBot.define do
-  sequence :random, aliases: [:name] do |n| 
-    "categoty #{n}"
-  end
+  sequence :category_seq
 
   factory :category, class: Category do
-    name
+    name { "categoty #{generate :category_seq}"}
     parent { nil }
 
     factory :category_with_children do
