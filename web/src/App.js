@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 import { Route, Link } from "react-router-dom"
 
-import Home from './routes/Home'
+import PackageList from './routes/PackageList'
+import PackageEdit from './routes/PackageEdit'
 
 export default class App extends Component {
 
   render() {
 
-    const store = this.props.store
-
     return (
       <div>
-        <Route path="/" exact render={props => <Home store={store} /> } ></Route>
+        <Route path="/" exact component={PackageList}  ></Route>
+        <Route path="/packages/edit/:id" component={PackageEdit} ></Route>
       </div>
     )
   }
