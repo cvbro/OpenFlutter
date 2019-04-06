@@ -48,9 +48,6 @@ GEM
       addressable
       gyoku
       httparty
-    apollo_upload_server (2.0.0.beta.1)
-      graphql (~> 1.7)
-      rails (>= 4.2)
     arel (9.0.0)
     awesome_nested_set (3.1.4)
       activerecord (>= 4.0.0, < 5.3)
@@ -207,6 +204,9 @@ GEM
     pg (1.1.4)
     pg (1.1.4-x64-mingw32)
     pg (1.1.4-x86-mingw32)
+    pg_search (2.1.4)
+      activerecord (>= 4.2)
+      activesupport (>= 4.2)
     pmap (1.1.1)
     poltergeist (1.18.1)
       capybara (>= 2.1, < 4)
@@ -336,7 +336,6 @@ PLATFORMS
   x86-mswin32
 
 DEPENDENCIES
-  apollo_upload_server (= 2.0.0.beta.1)
   awesome_nested_set
   bootsnap (>= 1.1.0)
   byebug
@@ -352,6 +351,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   mini_magick
   pg (>= 0.18, < 2.0)
+  pg_search
   pry-rails
   puma (~> 3.11)
   rack-cors
