@@ -14,7 +14,7 @@ module Types
 
         define_method name do |**kwargs|
           query = model_class
-          query = query.where(name: kwargs[:keyword]) if kwargs[:keyword]
+          query = query.search_by_keyword(kwargs[:keyword]) if kwargs[:keyword]
           query.all
         end
       end
