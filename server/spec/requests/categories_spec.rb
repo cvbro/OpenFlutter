@@ -19,11 +19,13 @@ RSpec.describe OpenFlutterSchema, type: :request do
   describe "#categories" do
     let(:query_string) do %|
     query{
-      categories{
-        edges{
-          node{
-            id
-            name
+      viewer{
+        categories{
+          edges{
+            node{
+              id
+              name
+            }
           }
         }
       }
@@ -32,7 +34,7 @@ RSpec.describe OpenFlutterSchema, type: :request do
 
     context "when there's no categories" do
       it "is blank" do
-        expect(executed["data"]["categories"]["edges"].size).to eq(0)
+        expect(executed["data"]["viewer"]["categories"]["edges"].size).to eq(0)
       end
     end
 
@@ -42,7 +44,7 @@ RSpec.describe OpenFlutterSchema, type: :request do
       end
 
       it "is present" do
-        expect(executed["data"]["categories"]["edges"].size).to be > 0
+        expect(executed["data"]["viewer"]["categories"]["edges"].size).to be > 0
       end
     end
   end

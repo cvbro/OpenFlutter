@@ -3,7 +3,7 @@ module Types
 
     def self.inherited(base)
       super
-      unless [Types::MutationType, Types::QueryType].include?(base)
+      unless [Types::MutationType, Types::QueryType, Types::ViewerType].include?(base)
         base.global_id_field :id
         base.implements GraphQL::Relay::Node.interface
       end
