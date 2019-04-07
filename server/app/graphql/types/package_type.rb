@@ -2,6 +2,7 @@ module Types
   class PackageType < Types::BaseObject
     global_id_field :id
     field :name, String, null: true
+    field :version, String, null: true
     field :pub_url, String, null: true
     field :repository_url, String, null: true
     field :about, String, null: true

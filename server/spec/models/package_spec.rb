@@ -26,14 +26,17 @@ RSpec.describe Package, type: :model do
         PackageCrawlJob.perform_now package
       end
       it "save result" do
+        expect(package.name).not_to be_nil
+        expect(package.version).not_to be_nil
         expect(package.pub_url).not_to be_nil
+        expect(package.repository_url).not_to be_nil
+        expect(package.homepage).not_to be_nil
+        expect(package.about).not_to be_nil
+        expect(package.license).not_to be_nil
       end
       it "have state pending" do
         expect(package).to have_state(:pending)
       end
     end
-
   end
-
-
 end

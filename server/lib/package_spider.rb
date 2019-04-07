@@ -22,25 +22,28 @@ class PackageSpider < Kimurai::Base
       raise NotFound
     end
 
-    item[:name] = url.gsub 'https://pub.flutter-io.cn/packages/', ''
+    item[:name] = url.gsub('https://pub.flutter-io.cn/packages/', '').strip
+
+    if response.css('.package-header h2').text =~ /^#{item[:name]}(.+)$/
+      item[:version] = $1.strip
+    end
 
     children = response.css('aside.sidebar').children
-    children.each_with_index do |tag, idx|
-      next unless tag.name == 'h3'
-      case tag.text
-      when 'About' then item[:about] = children[idx + 1]
-      when 'License' then item[:license] = children[idx + 1]
+    children.select{ |t| t.name.in? ["p", "h3"] }.each_slice(2) do |h3, p|
+      case h3.text
+      when 'About' then item[:about] = p.to_s.strip
+      when 'License' then item[:license] = p.to_s.strip
       end
     end
 
     response.css('aside.sidebar a').each do |tag|
       case tag.text
-      when 'Homepage' then item[:homepage] = tag.attribute('href').to_s
-      when /^Repository.*/ then item[:repository_url] = tag.attribute('href').to_s
+      when 'Homepage' then item[:homepage] = tag.attribute('href').to_s.strip
+      when /^Repository.*/ then item[:repository_url] = tag.attribute('href').to_s.strip
       end
     end
 
-    item[:published] = response.css('div.package-header div.metadata span').text
+    item[:published] = response.css('div.package-header div.metadata span').text.strip
 
     raise NotFound if item.blank?
     item
