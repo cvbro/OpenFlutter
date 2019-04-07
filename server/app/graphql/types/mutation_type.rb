@@ -4,6 +4,6 @@ module Types
     field :updateCategory, mutation: Mutations::UpdateCategory
     field :createCategory, mutation: Mutations::CreateCategory
     field :updatePackage, mutation: Mutations::UpdatePackage
-    field :importPackage, mutation: Mutations::ImportPackage
+    field :createPackage, mutation: Mutations::CreatePackage
   end
 end

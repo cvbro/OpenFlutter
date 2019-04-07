@@ -4,6 +4,8 @@ class Package < ApplicationRecord
   include AASM
   mount_uploader :image, ImageUploader
   mount_uploader :video, VideoUploader
+  validates :name, presence: true
+  validates :name, uniqueness: true
 
   pg_search_scope :search_by_keyword, against: :name
 
@@ -14,23 +16,38 @@ class Package < ApplicationRecord
     state :showing
     state :hiding
 
-    event :begin do
-      transitions from: :init, to: :processing
+    event :process_begin do
+      transitions from: [:init, :pending], to: :processing, success: :run_process do
+        guard do
+          self.name.present?
+        end
+      end
     end
 
-    event :finish do
-      transitions from: :processing, to: :pending
+    event :process_finish do
+      transitions from: :processing, to: :pending do
+        guard do
+          self.name.present?
+        end
+      end
     end
 
     event :publish do
       transitions from: :pending, to: :showing
     end
+
     after_all_transitions :refresh_aasm_timestamps
   end
 
-
-
   def refresh_aasm_timestamps
     self.aasm_timestamps[aasm.current_event] = DateTime.now
+  end
+
+  def run_process
+    PackageCrawlJob.perform_later self
+  end
+
+  def self.url_for(name)
+    "https://pub.flutter-io.cn/packages/#{name}" if name
   end
 end
