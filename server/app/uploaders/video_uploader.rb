@@ -7,10 +7,6 @@ class VideoUploader < FileUploader
       position: :bottom_right,
       margin_width: 40,
       margin_height: 34
-    },
-    callbacks: {
-      before_transcode: :begin,
-      after_transcode: :finish
     }
   }
 
