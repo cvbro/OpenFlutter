@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 import PackageList from '../components/PackageList'
 
-import logo from '../images/logo.png'
+import logo from '../images/logoO.png'
 
 
 export default class Home extends Component {
@@ -15,7 +15,6 @@ export default class Home extends Component {
         <div className="top clear">
           <div className="fl logo">
             <img src={logo} alt=""/>
-            <span>Open Flutter</span>
           </div>
           <ul className="fr nav clear">
             <li className="fl nav-active">控件</li>
@@ -27,6 +26,10 @@ export default class Home extends Component {
           </ul>
         </div>
         <div className="nav-list">
+          <div className="search clear">
+            <input type="text" className="fl" placeholder="搜索"/>
+            <span className="fl"></span>
+          </div>
           <div className="container">
             <div className="type">分类</div>
             <ul className="nav-main">
