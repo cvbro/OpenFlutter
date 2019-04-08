@@ -11,11 +11,19 @@ module.exports = {
       { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
       { test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot|mp4)(\?.*$|$)/, use: ['file-loader'] },
       { test: /\.(css|scss)$/, use: [
-        'style-loader',
+        { loader: 'style-loader' },
         {
           loader: 'css-loader',
           options: {
             modules: false,
+          }
+        },
+        {
+          loader: 'postcss-loader',
+          options: {
+            plugins: [
+              require('autoprefixer')({ }),
+            ]
           }
         },
         {

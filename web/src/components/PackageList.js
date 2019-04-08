@@ -1,18 +1,9 @@
 import React, { useState, Component } from 'react'
-import gql from 'graphql-tag'
-import { Query } from 'react-apollo'
-import Player from 'react-player'
-import ProgressBar from '../components/ProgressBar'
-const Line = ProgressBar.Line
-
-import Loading from './Loading'
-import Error from './Error'
 
 import video1 from '../images/video1.mp4'
 import video2 from '../images/video2.mp4'
 import video3 from '../images/video3.mp4'
 import video4 from '../images/video4.mp4'
-// import playerIcon from '../images/playerBtn.png'
 
 import cs from 'classnames'
 const PackageListItem = ({ item }) => {
@@ -56,7 +47,6 @@ function ShowVideo(props) {
 
 function VideoComp(props) {
   const url = props.url ? props.url : '';
-  console.log('url', url, !!url);
 
   return <ShowVideo url={props.url}></ShowVideo>;
 
@@ -65,7 +55,6 @@ function VideoComp(props) {
 function PlayerBtn(props) {
   let {item,index,hasVideo} = props
   hasVideo = hasVideo ? hasVideo : '';
-  console.log('hasVideo', hasVideo);
   const playerVideo = function (event, item, index) {
     props.playerVideo && props.playerVideo(event.currentTarget, item, index)
   }
@@ -126,11 +115,9 @@ class PackageList extends Component {
         }
       ]
     }
-    // console.log('data', this.state.mainList);
 
   }
   playerVideo(e, item, index) {
-    console.log(e, item, index);
     
     // return
     this.setState({
@@ -146,7 +133,6 @@ class PackageList extends Component {
       imgk = imgW / imgH, //图片宽高比例
       ori = k > imgk ? true : false;  //视频宽高比例跟图片宽高比例对比
     // video.src = item.videoUrl;
-    console.log(k, imgk, video);
     if (ori) {
       if (k >= 1) {
         video.style.width = imgW * k * KK + "px";
@@ -166,7 +152,6 @@ class PackageList extends Component {
 
   }
   onMouseLeave(e, item, index) {
-    console.log(index);
 
     this.setState({
       btnIndex:-1,
@@ -174,7 +159,6 @@ class PackageList extends Component {
     })
   }
   onMouseEnter(e, item, index) {
-    console.log('index',index);
     
     this.setState({
       btnIndex: index
@@ -204,45 +188,5 @@ class PackageList extends Component {
   }
 }
 
-// const PackageList = ({list}) => (
-//   <ul className="main-list clear">
-//     {list.map(item => <PackageListItem key={item.id} item={item} />)}
-//   </ul>
-// )
 
-const query = gql`
-{
-  packages {
-    id
-    name
-    image
-    video
-    pubUrl
-    repositoryUrl
-  }
-}
-`
-
-
-
-const WrappedPackageList = () => (
-  <Query query={query}>
-    {({ loading, error, data }) => {
-
-      // if (loading) {
-      //   return <p>Loading...</p>
-      // }
-
-
-      // if (error) {
-      //   return <p>Error...</p>
-      // }
-
-      // return <PackageList list={data.packages} />
-      return <PackageList />
-    }}
-  </Query>
-)
-
-
-export default WrappedPackageList
+export default PackageList

@@ -205,7 +205,8 @@ ol {
 .main-img {
     width: 100%;
     height: 475px;
-    background: url("../images/BG.png") center no-repeat/cover;
+    background: url("../images/BG.png") center no-repeat;
+    background-size: cover;
 }
 
 .main-title {
@@ -235,12 +236,14 @@ ol {
 }
 .limit span:nth-child(1) {
     margin-left: 13px;
-    background: url("../images/pub.png") center no-repeat/cover;
+    background: url("../images/pub.png") center no-repeat;
+    background-size: cover;
 }
 
 .limit span:nth-child(2) {
     margin-left: 23px;
-    background: url("../images/github.png") center no-repeat/cover;
+    background: url("../images/github.png") center no-repeat;
+    background-size: cover;
 }
 
 .loadMore {
@@ -283,7 +286,8 @@ ol {
     height: 35px;
     border-radius: 0 22px 22px 0;
     cursor: pointer;
-    background: #0f7bff url("../images/search.png") center no-repeat/15px 14.25px;
+    background: #0f7bff url("../images/search.png") center no-repeat;
+    background-size: 15px 14.25px;
 }
 .search span:hover{
     opacity: 0.9;
@@ -308,6 +312,7 @@ ol {
     right: 0;
     left: 0;
     bottom: 0;
-    background: rgba(0,0,0,.2) url(../images/playerBtn.png) no-repeat center/64px 64px;
+    background: rgba(0,0,0,.2) url(../images/playerBtn.png) no-repeat center;
+    background-size: 64px 64px;
     cursor: pointer;
 }
