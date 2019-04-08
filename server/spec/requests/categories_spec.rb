@@ -83,13 +83,14 @@ RSpec.describe OpenFlutterSchema, type: :request do
   end
 
   describe "#updateCategory" do
+    let(:name) { build(:category).name }
     let(:parent) { create(:category_with_children) }
     let(:other) { create(:category_with_children) }
     let(:current) { parent.children.first }
-    let(:variables) { {id: current.id, parent_id: other.id } }
+    let(:variables) { {id: current.id, name: name, parent_id: other.id } }
     let(:query_string) do %|
-    mutation($id: ID!, $parent_id: Int){
-      updateCategory(input: {id: $id, parentId: $parent_id}) {
+    mutation($id: ID!, $name: String!, $parent_id: Int){
+      updateCategory(input: {id: $id, name: $name, parentId: $parent_id}) {
         category {
           id
           name
