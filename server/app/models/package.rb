@@ -2,6 +2,10 @@ require 'carrierwave/orm/activerecord'
 class Package < ApplicationRecord
   include PgSearch
   include AASM
+  
+  has_many :package_categories
+  has_many :categories, through: :package_categories
+
   mount_uploader :image, ImageUploader
   mount_uploader :video, VideoUploader
   validates :name, presence: true
@@ -44,7 +48,7 @@ class Package < ApplicationRecord
   end
 
   def run_process
-    PackageCrawlJob.perform_later self
+    PackageCrawlJob.perform_later(self) if self.name and self.id
   end
 
   def self.url_for(name)

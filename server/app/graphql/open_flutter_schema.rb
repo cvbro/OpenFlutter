@@ -16,6 +16,8 @@ class OpenFlutterSchema < GraphQL::Schema
     case obj
     when Package
       Types::PackageType
+    when Category
+      Types::CategoryType
     else
       raise("Unexpected object: #{obj}")
     end

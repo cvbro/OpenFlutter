@@ -15,5 +15,7 @@ module Types
 
     field :image, FileType, null: true
     field :video, FileType, null: true
+
+    field :categories, [CategoryType], null: false
   end
 end

@@ -7,10 +7,16 @@ module Mutations
     argument :parent_id, Integer, required: false
 
     def resolve(name:, parent_id: nil)
-      record = Category.create! name: name, parent_id: parent_id
-      {
-        category: record
-      }
+      record = Category.new name: name, parent_id: parent_id
+      if record.save
+        {
+          category: record
+        }
+      else
+        {
+          errors: record.errors.full_messages
+        }
+      end
     end
   end
 end

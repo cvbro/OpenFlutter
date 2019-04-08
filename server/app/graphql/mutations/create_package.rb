@@ -5,9 +5,10 @@ module Mutations
     argument :name, String, required: true
     argument :image, String, required: false
     argument :video, String, required: false
+    argument :category_ids, [ID], required: false, loads: Types::CategoryType, as: :categories
 
-    def resolve(name:, video: nil, image: nil)
-      record = Package.new name: name
+    def resolve(name:, categories: [], video: nil, image: nil)
+      record = Package.new name: name, categories: categories
       if record.process_begin!
         PackageUploadJob.perform_later record, image, video
         {
