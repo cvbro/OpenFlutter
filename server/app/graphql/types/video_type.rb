@@ -1,5 +1,5 @@
 module Types
-  class FileType < Types::BaseScalar
+  class VideoType < Types::BaseScalar
     def self.coerce_input(file, context)
       return nil if file.nil?
 

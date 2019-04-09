@@ -13,8 +13,8 @@ module Types
     field :overall, Integer, null: true
     field :publisahed_at, String, null: true
 
-    field :image, FileType, null: true
-    field :video, FileType, null: true
+    field :image, ImageType, null: true
+    field :video, VideoType, null: true
 
     field :categories, [CategoryType], null: false
   end
