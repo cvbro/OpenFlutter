@@ -1,18 +1,18 @@
 import React, { useState } from 'react'
 import {withRouter} from 'react-router'
+import qs from 'qs'
+import _ from 'lodash'
 
 const Search = props => {
   const {location, history, match} = props
-  const params = new URLSearchParams(location.search);
-  const [keyword, setKeyword] = useState(params.get('keyword'))
+  const params = qs.parse(location.search, {ignoreQueryPrefix:true})
+  const [keyword, setKeyword] = useState(params['keyword'])
+
 
   const handleSearch = () => {
-    if (!keyword) {
-      return history.push({pathname: match.path})
-    }
     history.push({
       pathname: match.path,
-      search: `?keyword=${keyword}`,
+      search: qs.stringify({...params, keyword: _.isEmpty(keyword) ? null : keyword }),
     })
   }
 

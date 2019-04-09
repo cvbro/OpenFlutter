@@ -111,11 +111,13 @@ fragment PackageList_viewer on Viewer
   first: {type: "Int"}
   after: {type: "String"}
   keyword: {type: "String"}
+  categoryId: {type: "ID"}
 ) {
   packages(
     first: $first
     after: $after
     keyword: $keyword
+    categoryId: $categoryId
   ) @connection(key: "PackageList_packages") {
     edges {
       cursor

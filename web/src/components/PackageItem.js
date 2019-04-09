@@ -31,7 +31,7 @@ const PackageItem = ({index, node, videoIndex, btnIndex, playerVideo, onMouseEnt
         <VideoComp url={videoIndex == index ? node.video : ''}></VideoComp>
         <PlayerBtn className="playerBtn" hasVideo={btnIndex !== index && node.video} index={index} item={node} playerVideo={playerVideo} ></PlayerBtn>
       </div>
-      <div className="main-title">{node.name}</div>
+      <div className="main-title">{node.name} {node.version}</div>
       <div className="limit clear">
         <span className="fl"></span>
         <span className="fl"></span>
@@ -46,6 +46,7 @@ export default createFragmentContainer(
 fragment PackageItem_node on Package {
   id
   name
+  version
   image
   video
 }

@@ -1,4 +1,5 @@
 type Category implements Node {
+  children: [Category!]
   id: ID!
   level: Int!
   name: String!
@@ -114,7 +115,7 @@ type DeleteCategoryPayload {
   clientMutationId: String
 }
 
-scalar File
+scalar Image
 
 type Mutation {
   createCategory(input: CreateCategoryInput!): CreateCategoryPayload
@@ -139,7 +140,7 @@ type Package implements Node {
   categories: [Category!]!
   health: Int
   id: ID!
-  image: File
+  image: Image
   license: String
   maintenance: Int
   name: String
@@ -149,7 +150,7 @@ type Package implements Node {
   publisahedAt: String
   repositoryUrl: String
   version: String
-  video: File
+  video: Video
 }
 
 """
@@ -271,9 +272,9 @@ input UpdatePackageInput {
   """
   clientMutationId: String
   id: ID!
-  image: File
+  image: Image
   name: String
-  video: File
+  video: Video
 }
 
 """
@@ -286,6 +287,8 @@ type UpdatePackagePayload {
   clientMutationId: String
   package: Package!
 }
+
+scalar Video
 
 type Viewer {
   categories(
@@ -303,7 +306,6 @@ type Viewer {
     Returns the first _n_ elements from the list.
     """
     first: Int
-    keyword: String
 
     """
     Returns the last _n_ elements from the list.
@@ -320,6 +322,7 @@ type Viewer {
     Returns the elements in the list that come before the specified cursor.
     """
     before: String
+    categoryId: ID
 
     """
     Returns the first _n_ elements from the list.

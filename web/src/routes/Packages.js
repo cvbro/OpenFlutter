@@ -9,9 +9,9 @@ import Layout from '../components/Layout'
 import PackageList from '../components/PackageList'
 
 const pageQuery = graphql`
-query PackagesQuery($first: Int, $after: String, $keyword: String) {
+query PackagesQuery($first: Int, $after: String, $keyword: String, $categoryId: ID) {
   viewer {
-    ...PackageList_viewer @arguments(first: $first, after: $after, keyword: $keyword)
+    ...PackageList_viewer @arguments(first: $first, after: $after, keyword: $keyword, categoryId: $categoryId)
   }
 }
 `
@@ -22,7 +22,7 @@ const Packages = ({location, match, history}) => {
 
   const renderChildren = ({error, props, retry}) => {
     if (!props) {
-      return <p>Loading</p>
+      return null
     }
 
     return <PackageList { ...props } />
@@ -33,7 +33,7 @@ const Packages = ({location, match, history}) => {
       <QueryRenderer
         environment={environment}
         query={pageQuery}
-        variables={{ first: 10, keyword: params.get('keyword') }}
+        variables={{ first: 10, categoryId: params.get('category'), keyword: params.get('keyword') }}
         render={renderChildren}
         />
     </Layout>
