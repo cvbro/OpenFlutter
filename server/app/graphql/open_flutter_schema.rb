@@ -3,12 +3,16 @@ class OpenFlutterSchema < GraphQL::Schema
   mutation(Types::MutationType)
   query(Types::QueryType)
 
+  def self.decode_gid(id)
+    GraphQL::Schema::UniqueWithinType.decode(id)
+  end
+
   def self.id_from_object(object, type_definition, query_ctx)
     GraphQL::Schema::UniqueWithinType.encode(type_definition.name, object.id)
   end
 
   def self.object_from_id(id, query_ctx)
-    type_name, item_id = GraphQL::Schema::UniqueWithinType.decode(id)
+    type_name, item_id = self.decode_gid(id)
     Object.const_get(type_name).find(item_id)
   end
 

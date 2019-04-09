@@ -6,5 +6,6 @@ module Types
     field :parent, CategoryType, null: true
 
     field :packages, [PackageType], null: false
+    field :children, [CategoryType], null: true
   end
 end

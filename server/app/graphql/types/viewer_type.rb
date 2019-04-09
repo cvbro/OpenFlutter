@@ -1,27 +1,28 @@
 module Types
   class ViewerType < Types::BaseObject
 
-    def self.simple_field(*names, **options, &block)
-      names.each do |name|
-        model_class = Object.const_get(name.to_s.singularize.camelcase)
-        type_class = Object.const_get("Types::#{model_class}Type")
-        default_field_options = { type: type_class.connection_type, null: false }
-        field_options = default_field_options.merge(options)
+    field :categories, type: CategoryType.connection_type, null: false
 
-        field(name, field_options) do
-          yield self if block_given?
-        end
-
-        define_method name do |**kwargs|
-          query = model_class
-          query = query.search_by_keyword(kwargs[:keyword]) if kwargs[:keyword]
-          query.all
-        end
-      end
+    field :packages, type: PackageType.connection_type, null: false do
+      argument :category_id, ID, required: false
+      argument :keyword, String, required: false
     end
 
-    simple_field :packages, :categories do |field|
-      field.argument :keyword, String, required: false
+    def categories
+      Category.roots
+    end
+
+    def packages(keyword: nil, category_id: nil)
+      query = Package.joins(:categories)
+
+      query = query.search_by_keyword(keyword) if keyword
+
+      if category_id
+        type_name, item_id = OpenFlutterSchema.decode_gid(category_id)
+        query = query.where(categories: {id: item_id})
+      end
+
+      query.all
     end
 
   end
