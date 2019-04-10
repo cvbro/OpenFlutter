@@ -20,9 +20,7 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: <%= Rails.application.credentials[Rails.env.to_sym][:database][:host] %>
-  user: <%= Rails.application.credentials[Rails.env.to_sym][:database][:user] %>
-  password: <%= Rails.application.credentials[Rails.env.to_sym][:database][:password] %>
+  url: <%= ENV["DATABASE_URL"] or Rails.application.credentials[Rails.env.to_sym][:database][:url] %>
 
 development:
   <<: *default

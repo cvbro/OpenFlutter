@@ -14,4 +14,4 @@ CarrierWave.configure do |config|
   config.aliyun_host       = "http://open-flutter-stg.oss-cn-shenzhen.aliyuncs.com"
   # Bucket 为私有读取请设置 true，默认 false，以便得到的 URL 是能带有 private 空间访问权限的逻辑
   # config.aliyun_private_read = false
-end
+end if Rails.application.credentials[Rails.env.to_sym]
