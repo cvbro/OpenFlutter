@@ -19,6 +19,11 @@ class Package < ApplicationRecord
     state :pending
     state :showing
     state :hiding
+    state :error
+
+    event :wrong do
+      transitions from: [:init, :processing], to: :error
+    end
 
     event :process_begin do
       transitions from: [:init, :pending], to: :processing, success: :run_process do

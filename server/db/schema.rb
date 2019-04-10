@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_08_021227) do
+ActiveRecord::Schema.define(version: 2019_04_10_051359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2019_04_08_021227) do
     t.string "aasm_state"
     t.jsonb "aasm_timestamps", default: {}
     t.string "version"
+    t.string "error_messages", default: [], array: true
   end
 
   add_foreign_key "package_categories", "categories"
