@@ -1,7 +1,7 @@
 version: '3'
 services:
   postgresql:
-    image: postgres:11
+    image: postgres:10
     volumes:
       - postgresql_data:/var/lib/postgresql/data
     environment:
@@ -15,11 +15,11 @@ services:
       - RAILS_ENV=production
       - RAILS_LOG_TO_STDOUT=true
     command: /bin/sh -c 'cd server && bundle exec rails s'
-  
+
   web:
     image:  registry-vpc.cn-shenzhen.aliyuncs.com/open_flutter/open_flutter:latest
-    environment:
-      - VIRTUAL_HOST=openflutter.com
+    env_file:
+      - ./web/.env
     command: /bin/sh -c 'cd web && exec nginx -g "daemon off;"'
 
   proxy:
@@ -28,6 +28,6 @@ services:
       - "80:80"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-    
+
 volumes:
   postgresql_data:
