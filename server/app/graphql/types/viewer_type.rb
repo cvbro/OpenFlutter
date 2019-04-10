@@ -13,7 +13,7 @@ module Types
     end
 
     def packages(keyword: nil, category_id: nil)
-      query = Package.joins(:categories)
+      query = Package.left_joins(:categories)
 
       query = query.search_by_keyword(keyword) if keyword
 
