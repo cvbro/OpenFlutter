@@ -4,7 +4,7 @@ rvm:
 
 branches:
   only:
-    - travis
+    - master
 
 cache:
   bundler:
