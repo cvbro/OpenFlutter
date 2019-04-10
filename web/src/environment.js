@@ -38,8 +38,8 @@ function fetchQuery(
       variables,
     })
   }
-
-  return fetch('http://localhost:3000/graphql', request).then(response => {
+  console.log('process.env.SERVER_URL', process.env.SERVER_URL)
+  return fetch(process.env.SERVER_URL, request).then(response => {
     return response.json();
   }).catch(error => {
     console.log(error);
