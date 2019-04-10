@@ -3,3 +3,4 @@ widget-lookup/
 Dockerfile
 docker-compose.yml
 .git/
+.travis.yml
