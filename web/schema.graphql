@@ -2,7 +2,7 @@ type Category implements Node {
   children: [Category!]
   id: ID!
   level: Int!
-  name: String!
+  name: String
   packages: [Package!]!
   parent: Category
 }

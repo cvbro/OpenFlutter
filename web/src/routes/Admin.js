@@ -8,7 +8,7 @@ import PackageTable from './admin/PackageTable'
 export default () => {
 
   return (
-    <div className="height-full">
+    <div className="dark">
       <nav className="nav-1 navbar navbar-light fixed-top">
         <div className="container">
           <ul className="nav ml-auto">
@@ -24,26 +24,6 @@ export default () => {
           </ul>
         </div>
       </nav>
-
-      <section className="brand-section">
-        <div className="brand-section-body">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-8 offset-md-2">
-                <h1 className="brand-heading">Open Flutter</h1>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="container content">
-        <div className="row">
-          <div className="col-md-6">
-            <h1>Welcome...</h1>
-          </div>
-        </div>
-      </section>
 
       <section id="packages" className="heading">
         <div>
@@ -77,10 +57,6 @@ export default () => {
 
       <section className="container content">
         <div className="row">
-          <h1>Categories</h1>
-          <p>Please view Alex's Github or go to the projects portion of his LinkedIn located just after his work
-            experience section. Although not all of his projects are on Github or LinkedIn, at least you can see
-            some of the projects he has worked on.</p>
           <table className="table table-hover table-dark">
             <thead>
               <tr>

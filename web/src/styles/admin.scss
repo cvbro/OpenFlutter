@@ -10,31 +10,9 @@ html {
     scroll-behavior: smooth;
 }
 
-/* 文字颜色 */
-body {
-    color: #fff !important;
-    background-color: #000 !important;
-}
 .nav-1 a {
     color: #fff !important;
     text-transform: uppercase;
-}
-
-/*放大背景图 */
-.brand-section {
-    background: url("#{$images}/1125776.jpeg") no-repeat fixed;
-    background-size: cover;
-}
-
-/* 文字居中 */
-.brand-section {
-    display: table;
-    width: 100%;
-    text-align: center;
-}
-.brand-section-body {
-    display: table-cell;
-    vertical-align: middle;
 }
 
 .brand-heading {
@@ -42,7 +20,7 @@ body {
 }
 
 .heading {
-    padding: 10rem 2rem;
+    padding: 4rem 2rem;
 }
 
 .content {
@@ -50,7 +28,7 @@ body {
 }
 
 #packages {
-    background: url("#{$images}/1006121.jpeg") no-repeat fixed;
+    background: url("#{$images}/1125776.jpeg") no-repeat fixed;
     background-size: cover;
 }
 
@@ -58,13 +36,6 @@ body {
     background: url("#{$images}/235613.jpeg") no-repeat fixed;
     background-size: cover;
 }
-
-#footer {
-    height: 50%;
-    background: url("#{$images}/66284.jpeg") no-repeat fixed;
-    background-size: cover;
-}
-
 
 input[type=checkbox] {
     transform: scale(1.2);
@@ -81,4 +52,9 @@ input[type=checkbox] {
 .light {
     color: #000;
     background-color: #fff;
+}
+
+.dark {
+    color: #fff !important;
+    background-color: #000 !important;
 }
