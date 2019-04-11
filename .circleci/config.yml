@@ -1,0 +1,80 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.5.1-node-browsers
+        environment:
+          BUNDLER_VERSION: 2.0.1
+          BUNDLE_JOBS: 3
+          BUNDLE_RETRY: 3
+          RAILS_ENV: test
+          DATABASE_URL: postgres://postgres@localhost
+
+      - image: circleci/postgres:9.6.2-alpine
+        environment:
+          POSTGRES_DB: open_flutter_test
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - rails-bundle-v2-{{ checksum "server/Gemfile.lock" }}
+            - rails-bundle-v2-
+
+      - run:
+          name: Install bundler
+          command: gem install bundler
+
+      - run:
+          name: Bundle Install
+          command: cd server && bundle check || bundle install
+
+      - save_cache:
+          paths:
+            - ./server/vendor/bundle
+          key: v1-dependencies-{{ checksum "server/Gemfile.lock" }}
+
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - run:
+          name: Database setup
+          command: cd server && bin/rails db:schema:load --trace
+
+      - run:
+          name: Run rspec in parallel
+          command: |
+            cd server && bundle exec rspec --profile 10 \
+                              --format RspecJunitFormatter \
+                              --out test_results/rspec.xml \
+                              --format progress \
+                              $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+
+      - store_test_results:
+          path: server/test_results
+
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - run:
+          name: Deploy over ssh
+          command: |
+            ssh $SSH_USER@$SSH_HOST "cd /home/app/OpenFlutter && docker-up"
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: circleci
+
