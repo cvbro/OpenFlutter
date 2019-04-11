@@ -118,6 +118,7 @@ fragment PackageList_viewer on Viewer
     after: $after
     keyword: $keyword
     categoryId: $categoryId
+    scope: "showing"
   ) @connection(key: "PackageList_packages") {
     edges {
       cursor
