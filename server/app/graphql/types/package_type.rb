@@ -17,5 +17,11 @@ module Types
     field :video, VideoType, null: true
 
     field :categories, [CategoryType], null: false
+    field :error_messages, [String], null: false
+    field :status, String, null: false
+
+    def status
+      self.object.human_aasm_state
+    end
   end
 end

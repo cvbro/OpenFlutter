@@ -12,7 +12,7 @@ module Types
     end
 
     def self.coerce_result(ruby_value, context)
-      "#{ruby_value.url}?x-oss-process=style/poster"
+      "#{ruby_value.url}?x-oss-process=style/poster" if ruby_value
     end
   end
 end

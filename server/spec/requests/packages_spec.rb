@@ -34,9 +34,8 @@ RSpec.describe OpenFlutterSchema, type: :request do
       before(:example) do
         ActiveJob::Base.queue_adapter = :test
       end
-      it "have 2 jobs been enqueued" do
+      it "have 1 jobs been enqueued" do
         expect(executed["data"]["createPackage"]["package"]["name"]).to eq("image_picker")
-        expect(PackageUploadJob).to have_been_enqueued
         expect(PackageCrawlJob).to have_been_enqueued
       end
     end

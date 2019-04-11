@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="rspec" tests="12" skipped="0" failures="0" errors="0" time="1.680247" timestamp="2019-04-11T19:02:27+08:00" hostname="ztluodeMacBook-Pro.local">
+<properties>
+<property name="seed" value="20490"/>
+</properties>
+<testcase classname="spec.models.package_spec" name="Package Package when a package run crawl_begin have been enqueued" file="./spec/models/package_spec.rb" time="0.064172"></testcase>
+<testcase classname="spec.models.package_spec" name="Package Package when a package run crawl_begin have state init" file="./spec/models/package_spec.rb" time="0.010007"></testcase>
+<testcase classname="spec.models.package_spec" name="Package Package when the job finish save result" file="./spec/models/package_spec.rb" time="0.677537"></testcase>
+<testcase classname="spec.models.package_spec" name="Package Package when the job finish have state pending" file="./spec/models/package_spec.rb" time="0.442662"></testcase>
+<testcase classname="spec.requests.categories_spec" name="OpenFlutterSchema#categories when there&apos;s no categories is blank" file="./spec/requests/categories_spec.rb" time="0.115851"></testcase>
+<testcase classname="spec.requests.categories_spec" name="OpenFlutterSchema#categories when there&apos;s some categories is present" file="./spec/requests/categories_spec.rb" time="0.034261"></testcase>
+<testcase classname="spec.requests.categories_spec" name="OpenFlutterSchema#createCategory when create a category as root node has level 0" file="./spec/requests/categories_spec.rb" time="0.013675"></testcase>
+<testcase classname="spec.requests.categories_spec" name="OpenFlutterSchema#createCategory when create a category as child node has level 1" file="./spec/requests/categories_spec.rb" time="0.045589"></testcase>
+<testcase classname="spec.requests.categories_spec" name="OpenFlutterSchema#updateCategory when move to other parent node has change parent" file="./spec/requests/categories_spec.rb" time="0.215494"></testcase>
+<testcase classname="spec.requests.categories_spec" name="OpenFlutterSchema#deleteCategory when delete a category which has no child can delete" file="./spec/requests/categories_spec.rb" time="0.029383"></testcase>
+<testcase classname="spec.requests.categories_spec" name="OpenFlutterSchema#deleteCategory when delete a category which has some children can&apos;t delete" file="./spec/requests/categories_spec.rb" time="0.003919"></testcase>
+<testcase classname="spec.requests.packages_spec" name="OpenFlutterSchema#createPackage when create a new package have 1 jobs been enqueued" file="./spec/requests/packages_spec.rb" time="0.021439"></testcase>
+</testsuite>

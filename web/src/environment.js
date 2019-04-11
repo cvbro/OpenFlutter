@@ -38,9 +38,13 @@ function fetchQuery(
       variables,
     })
   }
-  console.log('process.env.SERVER_URL', process.env.SERVER_URL)
   return fetch(process.env.SERVER_URL, request).then(response => {
-    return response.json();
+    return response.json().then(json => {
+      if (json["errors"]) {
+        throw new Error(json["errors"].map(error=>error.message).join(', '))
+      }
+      return json
+    });
   }).catch(error => {
     console.log(error);
   })

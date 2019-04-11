@@ -1,0 +1,60 @@
+$images: "../images/admin";
+
+/* 设置高度 */
+html, body, #root, .height-full, .brand-section {
+    height: 100%;
+}
+
+/* 锚点过渡 */
+html {
+    scroll-behavior: smooth;
+}
+
+.nav-1 a {
+    color: #fff !important;
+    text-transform: uppercase;
+}
+
+.brand-heading {
+    font-size: 100px;
+}
+
+.heading {
+    padding: 4rem 2rem;
+}
+
+.content {
+    padding: 5rem 0;
+}
+
+#packages {
+    background: url("#{$images}/1125776.jpeg") no-repeat fixed;
+    background-size: cover;
+}
+
+#categories {
+    background: url("#{$images}/235613.jpeg") no-repeat fixed;
+    background-size: cover;
+}
+
+input[type=checkbox] {
+    transform: scale(1.2);
+}
+
+.table-button {
+    padding: 1rem;
+    display: flex;
+    button, a {
+        margin-right: 1rem;
+    }
+}
+
+.light {
+    color: #000;
+    background-color: #fff;
+}
+
+.dark {
+    color: #fff !important;
+    background-color: #000 !important;
+}

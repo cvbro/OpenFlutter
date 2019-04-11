@@ -24,7 +24,7 @@ const PackageList = props => {
     setVideoIndex(index)
     getVideoRatioFromSnapshot(item.video).then(({width,height}) => {
       const k = width / height
-      const KK = 1.05; //视频长宽放大1.05倍
+      const KK = 1; //视频长宽放大1.05倍
       let video = e.parentElement.querySelector('video'), //视频的dom节点
           img = e.parentElement.querySelector('.main-img'), //图片的dom节点
           imgW = img.offsetWidth,//图片的宽度
@@ -40,13 +40,13 @@ const PackageList = props => {
         } else {
           video.style.width = imgW / k * KK + "px";
           video.style.height = imgH * KK + "px";
-          e.parentElement.style.overflow = 'hidden';
+          e.parentElement.parentElement.style.overflow = 'hidden';
         }
 
       } else {
         video.style.width = imgW * KK + "px";
         video.style.height = "auto";
-        e.parentElement.style.overflow = 'hidden';
+        e.parentElement.parentElement.style.overflow = 'hidden';
       }
     }); //视频宽高比例
   }
@@ -86,7 +86,7 @@ const PackageList = props => {
       <ul className="main-list clear">
         {renderItems()}
       </ul >
-      <div className="loadMore" onClick={refetch}>加载更多</div>
+      <div className="loadMore">加载更多</div>
     </div>
     )
 }
@@ -118,6 +118,7 @@ fragment PackageList_viewer on Viewer
     after: $after
     keyword: $keyword
     categoryId: $categoryId
+    scope: "showing"
   ) @connection(key: "PackageList_packages") {
     edges {
       cursor

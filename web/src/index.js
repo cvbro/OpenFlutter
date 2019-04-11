@@ -13,4 +13,4 @@ const Connected = Component => (
 	</Router>
 )
 
-ReactDOM.render(<Connected />, document.body.appendChild(document.createElement('main')))
+ReactDOM.render(<Connected />, document.getElementById('root'))

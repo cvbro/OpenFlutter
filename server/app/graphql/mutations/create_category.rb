@@ -1,7 +1,8 @@
 module Mutations
   class CreateCategory < GraphQL::Schema::RelayClassicMutation
 
-    field :category, Types::CategoryType, null: false
+    field :category, Types::CategoryType, null: true
+    field :errors, [String], null: true
 
     argument :name, String, required: true
     argument :parent_id, Integer, required: false

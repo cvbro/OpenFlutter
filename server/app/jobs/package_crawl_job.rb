@@ -1,5 +1,12 @@
+# coding: utf-8
 class PackageCrawlJob < ApplicationJob
   queue_as :default
+
+  rescue_from(StandardError) do |exception|
+    package = arguments.first
+    package.error_messages << exception.to_s
+    package.wrong!
+  end
 
   def perform(package)
     url = package.pub_url || "https://pub.flutter-io.cn/packages/#{package.name}"
@@ -7,5 +14,4 @@ class PackageCrawlJob < ApplicationJob
     package.assign_attributes result
     package.process_finish!
   end
-
 end

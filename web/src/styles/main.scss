@@ -156,6 +156,18 @@ ol {
     color: #0f7bff;
 }
 
+.nav-main {
+    a:visited {
+        color: #333333
+    }
+    .active {
+        color: #0f7bff;
+    }
+    a:hover {        
+        color: #0f7bff
+    }
+}
+
 /* 列表 */
 .main {
     margin: 88px 0 0 280px;

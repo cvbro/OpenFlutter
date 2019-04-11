@@ -5,7 +5,7 @@ const Dotenv = require('dotenv-webpack')
 module.exports = {
 //  devtool: 'cheap-module-inline-source-map',
   entry: ["@babel/polyfill", "./src/index.js"],
-  plugins: [new HtmlWebpackPlugin(), new Dotenv()],
+  plugins: [new HtmlWebpackPlugin({template: './src/index.html'}), new Dotenv()],
   module: {
     rules: [
       { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },

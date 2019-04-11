@@ -67,7 +67,6 @@ RSpec.describe OpenFlutterSchema, type: :request do
     context "when create a category as root node" do
       it "has level 0" do
         expect(executed["data"]["createCategory"]["category"]["level"]).to eq(0)
-        expect(executed["data"]["createCategory"]["category"]["name"]).to eq(name)
       end
     end
 
@@ -77,7 +76,6 @@ RSpec.describe OpenFlutterSchema, type: :request do
 
       it "has level 1" do
         expect(executed["data"]["createCategory"]["category"]["level"]).to eq(1)
-        expect(executed["data"]["createCategory"]["category"]["name"]).to eq(name)
       end
     end
   end
