@@ -1,7 +1,7 @@
 module Mutations
   class UpdatePackage < GraphQL::Schema::RelayClassicMutation
-
-    field :package, Types::PackageType, null: false
+    field :package, Types::PackageType, null: true
+    field :errors, [String], null: true
 
     argument :id, ID, required: true, loads: Types::PackageType, as: :record
     argument :name, String, required: false
@@ -10,9 +10,8 @@ module Mutations
     argument :video, Types::VideoType, required: false
 
     def resolve(record:, categories: [], name: nil, image: nil, video: nil)
-      record.update name: name, categories: categories
+      record.update name: name, categories: categories, image: image, video: video
       if record.save
-        PackageUploadJob.perform_later record, image, video
         {
           package: record
         }
