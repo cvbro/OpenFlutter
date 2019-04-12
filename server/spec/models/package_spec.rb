@@ -23,7 +23,8 @@ RSpec.describe Package, type: :model do
     context "when the job finish" do
       before(:example) do
         package.update! aasm_state: "processing"
-        PackageCrawlJob.perform_now package
+        PackageCrawlJob.perform_now package.id
+        package.reload
       end
       it "save result" do
         expect(package.name).not_to be_nil

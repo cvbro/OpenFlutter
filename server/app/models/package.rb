@@ -70,7 +70,7 @@ class Package < ApplicationRecord
   end
 
   def run_process
-    PackageCrawlJob.perform_later(self) if self.name and self.id
+    PackageCrawlJob.perform_later(self.id) if self.name and self.id
   end
 
   def self.url_for(name)
