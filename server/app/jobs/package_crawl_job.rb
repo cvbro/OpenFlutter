@@ -1,6 +1,5 @@
 # coding: utf-8
 class PackageCrawlJob < ApplicationJob
-  queue_as :default
 
   rescue_from(StandardError) do |exception|
     package = arguments.first

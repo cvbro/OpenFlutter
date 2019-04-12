@@ -1,5 +1,10 @@
 version: '3'
 services:
+  redis:
+    image: redis
+    volumes:
+      - redis_data:/data
+
   postgresql:
     image: postgres:10
     volumes:
@@ -14,6 +19,7 @@ services:
       - PORT=80
       - RAILS_ENV=production
       - RAILS_LOG_TO_STDOUT=true
+      - REDIS_URL=redis://redis
     command: /bin/sh -c 'cd server && bundle exec rails s'
 
   web:
