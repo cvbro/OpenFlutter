@@ -36,4 +36,5 @@ services:
       - /var/run/docker.sock:/tmp/docker.sock:ro
 
 volumes:
+  redis_data:
   postgresql_data:
