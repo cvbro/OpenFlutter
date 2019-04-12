@@ -1,6 +1,9 @@
 version: 2
 jobs:
   build:
+    branches:
+      only:
+        - master
     docker:
       - image: circleci/ruby:2.5.1-node-browsers
         environment:
@@ -30,12 +33,12 @@ jobs:
 
       - run:
           name: Bundle Install
-          command: cd server && bundle check || bundle install
+          command: cd server && bundle check || bundle install --path vendor/bundle
 
       - save_cache:
           paths:
             - ./server/vendor/bundle
-          key: v1-dependencies-{{ checksum "server/Gemfile.lock" }}
+          key: rails-bundle-v2-{{ checksum "server/Gemfile.lock" }}
 
       - run:
           name: Wait for DB
@@ -57,24 +60,20 @@ jobs:
       - store_test_results:
           path: server/test_results
 
-  deploy:
-    machine:
-      enabled: true
-    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - $SSH_FINGERPRINT
+
+      - run:
+          name: add ssh know hosts
+          command: ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
+
+      - run:
+          name: Checkout git version
+          command: export current_version=$(git log --abbrev-commit --pretty=oneline | head -n 1 | awk '{ print $1}')
+
       - run:
           name: Deploy over ssh
           command: |
-            ssh $SSH_USER@$SSH_HOST "cd /home/app/OpenFlutter && docker-up"
-
-workflows:
-  version: 2
-  build-and-deploy:
-    jobs:
-      - build
-      - deploy:
-          requires:
-            - build
-          filters:
-            branches:
-              only: master
+            ssh $SSH_USER@$SSH_HOST "cd /home/app/OpenFlutter; git fetch; git reset --hard $current_version; docker-up"
 
