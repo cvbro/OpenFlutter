@@ -43,5 +43,7 @@ module OpenFlutter
       end
     end
     config.middleware.use RelayUploadMiddleware
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end

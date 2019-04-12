@@ -1,4 +1,3 @@
-# coding: utf-8
 class PackageCrawlJob < ApplicationJob
 
   rescue_from(StandardError) do |exception|

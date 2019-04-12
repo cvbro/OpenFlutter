@@ -5,6 +5,13 @@ services:
     volumes:
       - redis_data:/data
 
+  sidekiq:
+    image: registry-vpc.cn-shenzhen.aliyuncs.com/open_flutter/open_flutter:latest
+    environment:
+      - RAILS_ENV=production
+      - REDIS_URL=redis://redis
+    command: /bin/sh -c 'cd server && bundle exec sidekiq'
+
   postgresql:
     image: postgres:10
     volumes:
