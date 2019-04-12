@@ -127,11 +127,15 @@ ol {
     left: 0;
     bottom: 0;
     z-index: 10;
-    width: 280px;
+    width: 300px;
     background-color: #ffffff;
     box-shadow: 22px 0px 65px 0px rgba(150, 163, 179, 0.08);
     /* overflow-y: scroll; */
     word-break: break-all;
+}
+
+.over-scroll {
+    overflow:scroll;
 }
 
 .nav-list .type {
@@ -156,15 +160,15 @@ ol {
     color: #0f7bff;
 }
 
-.nav-main {
-    a:visited {
-        color: #333333
-    }
-    .active {
+.nav-link {
+    color: #333;
+
+    &.active{
         color: #0f7bff;
     }
-    a:hover {        
-        color: #0f7bff
+
+    &:hover {
+        color: #0f7bff;
     }
 }
 

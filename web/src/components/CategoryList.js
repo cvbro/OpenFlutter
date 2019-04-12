@@ -30,20 +30,53 @@ const RootItem = ({node, setCategory}) => {
   )
 }
 
-const CategoryList = props => {
+class CategoryList extends React.Component {
 
-  if (!props.viewer) {
-    return null
+  constructor(props) {
+    super(props);
+    this.state = {
+      height: 'auto',
+      overflow: 'auto'
+    }
+    this.wrapper = React.createRef()
+    this.content = React.createRef()
   }
 
-  return (
-    <div className="nav-list">
-      <Search />
-      <div className="container">
-        {props.viewer && props.viewer.categories.edges.map(edge => <RootItem key={edge.node.id} node={edge.node} setCategory={props.setCategory}/>)  }
+  componentWillUpdate = () => {
+
+    if (!this.wrapper.current || this.state.height == 'auto') {
+      return
+    }
+
+    const height = this.wrapper.current.offsetHeight - 62
+    const state = { height }
+
+    if (this.content.current.offsetHeight > height) {
+      state.overflow = 'scroll'
+    }
+
+    this.setState({overflow: 'scroll'})
+  }
+
+  render () {
+
+    const props = this.props
+
+    if (!props.viewer) {
+      return null
+    }
+
+    return (
+      <div ref={this.wrapper} className="nav-list" >
+        <Search />
+        <div className="container" style={{height: this.state.height, overflow: this.state.overflow}}>
+          <div ref={this.content} className="nav-content">
+            {props.viewer && props.viewer.categories.edges.map(edge => <RootItem key={edge.node.id} node={edge.node} setCategory={props.setCategory}/>)  }
       </div>
-    </div>
-  )
+        </div>
+        </div>
+    )
+  }
 }
 
 const query = graphql`
