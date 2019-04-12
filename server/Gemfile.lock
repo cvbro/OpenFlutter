@@ -228,6 +228,8 @@ GEM
     puma (3.12.1-java)
     rack (2.0.6)
     rack-cors (1.0.3)
+    rack-protection (2.0.5)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.2.1)
@@ -259,6 +261,7 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     rbcat (0.2.1)
+    redis (4.1.0)
     regexp_parser (1.3.0)
     rspec (3.8.0)
       rspec-core (~> 3.8.0)
@@ -292,6 +295,11 @@ GEM
       childprocess (~> 0.5)
       rubyzip (~> 1.2, >= 1.2.2)
     shellany (0.0.1)
+    sidekiq (5.2.5)
+      connection_pool (~> 2.2, >= 2.2.2)
+      rack (>= 1.5.0)
+      rack-protection (>= 1.5.0)
+      redis (>= 3.3.5, < 5)
     spoon (0.0.6)
       ffi
     spring (2.0.2)
@@ -364,6 +372,7 @@ DEPENDENCIES
   rspec-rails
   rspec_junit_formatter
   seed-fu (~> 2.3)
+  sidekiq
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
