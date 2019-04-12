@@ -44,7 +44,7 @@ class CategoryList extends React.Component {
 
   componentWillUpdate = () => {
 
-    if (!this.wrapper.current || this.state.height == 'auto') {
+    if (!this.wrapper.current || this.state.height != 'auto') {
       return
     }
 
@@ -55,7 +55,7 @@ class CategoryList extends React.Component {
       state.overflow = 'scroll'
     }
 
-    this.setState({overflow: 'scroll'})
+    this.setState(state)
   }
 
   render () {
